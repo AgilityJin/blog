@@ -26,8 +26,8 @@ module.exports = {
     },
     author: 'Agility',
     // 备案
-    // record: 'ICP 备案文案',
-    // recordLink: 'ICP 备案指向链接',
+    record: '赣ICP备17013449号-1',
+    recordLink: 'http://www.beian.miit.gov.cn',
     // cyberSecurityRecord: '公安部备案文案',
     // cyberSecurityLink: '公安部备案指向链接',
     // 项目开始时间，只填写年份
@@ -38,10 +38,10 @@ module.exports = {
     // 友情链接
     friendLink: [
       {
-        title: 'vuepress-theme-reco',
-        desc: 'A simple and beautiful vuepress Blog & Doc theme.',
-        logo: "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
-        link: 'https://vuepress-theme-reco.recoluan.com'
+        title: 'my_github',
+        desc: '进入我的github,发现更多好内容',
+        logo: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597861143184&di=90dd7e13aa8129c0332a36649ed5fa6d&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D266814527%2C3437462030%26fm%3D214%26gp%3D0.jpg",
+        link: 'https://github.com/AgilityJin'
       },
     ],
     sidebar: 'auto', //在所有页面中启用自动生成侧栏

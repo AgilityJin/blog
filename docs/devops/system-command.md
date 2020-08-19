@@ -1,5 +1,5 @@
 ---
-title: 实用命令
+title: 系统实用命令
 date: 2020-08-19
 categories:
   - 系统运维
@@ -12,7 +12,7 @@ tags:
 
 ## Linux & Mac
 
-### which [commad] 查看命令所处路径
+### which [command] 查看命令所处路径
 
 示例: `which ls`
 
