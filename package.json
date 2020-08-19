@@ -1,0 +1,21 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "知识分享与记录",
+  "main": "index.js",
+  "repository": "git@github.com:AgilityJin/blog.git",
+  "author": "jinxiaomin <jinxiaomin@daihoubang.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "sh dev.sh",
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "vuepress": "^1.5.3",
+    "vuepress-plugin-flowchart": "^1.4.3",
+    "vuepress-theme-reco": "^1.5.5"
+  },
+  "dependencies": {}
+}
