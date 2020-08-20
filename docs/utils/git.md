@@ -1,10 +1,12 @@
 ---
 title: Git常用命令
 date: 2020-08-19
+author: 阮一峰
 categories:
-  - 工具
+  - 辅助工具
 tags:
   - git
+  - 转载
 ---
 
 ## Git 常用命令
