@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>拖放示例</title>
+  <style>
+    .container {
+      width: 300px;
+      height: 300px;
+      background: #f5f5f5;
+    }
+    .dragDropDom {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      color: white;
+      background: green;
+    }
+  </style>
+</head>
+<body>
+  <!-- region dragDrop -->
+  <div class="container">容器</div>
+  <div class="dragDropDom" draggable="true">拖拽我</div>
+
+  <script>
+    window.onload = function () {
+      const dragDropDom = document.querySelector('.dragDropDom')
+      dragDropDom.addEventListener('dragstart', ev => {
+        // 设置拖放数据
+        ev.dataTransfer.setData('class', '.dragDropDom')
+      })
+
+      const containerDom = document.querySelector('.container')
+      // 许可放置
+      containerDom.addEventListener('dragover', ev => {
+        ev.preventDefault() // 默认无法放置在其他元素内,设置后阻止该行为
+      })
+      // 处理放置
+      containerDom.addEventListener('drop', ev => {
+        ev.preventDefault() // 避免浏览器对数据的默认处理
+        const data = ev.dataTransfer.getData('class')
+        ev.target.appendChild(document.querySelector(data))
+      })
+    }
+  </script>
+  <!-- endregion dragDrop -->
+</body>
+</html>

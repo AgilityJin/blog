@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Audio Demo</title>
+</head>
+<body>
+  <!-- region video -->
+  <!-- 普通引用 -->
+  <video id="video" src="http://cdn.agilityjin.top/videos/836175702.mp4" controls="controls" width="300" height="300">
+    您的浏览器不支持展示该视频
+  </video>
+
+  <!-- 多格式引用 -->
+  <video controls="controls" width="300" height="300">
+    <source src="demo.mp4" type="video/mp4">
+    <source src="demo.ogg" type="video/ogg">
+    浏览器按顺序采用第一个可用的源,都不可用则展示当前提示文本
+  </video>
+
+  <script>
+    (function() {
+      var videoDom = document.querySelector('#video')
+      console.dir(videoDom)
+    })()
+  </script>
+  <!-- endregion video -->
+
+  <!-- region audio -->
+  <!-- 普通引用 -->
+  <video id="audio" src="http://cdn.agilityjin.top/videos/836175702.mp3" controls="controls" width="300" height="300">
+    您的浏览器不支持播放该音频
+  </video>
+
+  <!-- 多格式引用 -->
+  <video controls="controls">
+    <source src="demo.mp3" type="video/mp4">
+    <source src="demo.ogg" type="video/ogg">
+    浏览器按顺序采用第一个可用的源,都不可用则展示当前提示文本
+  </video>
+
+  <script>
+    (function() {
+      var audioDom = document.querySelector('#audio')
+      console.dir(audioDom)
+    })()
+  </script>
+  <!-- endregion audio -->
+</body>
+</html>

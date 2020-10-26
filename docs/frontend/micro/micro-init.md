@@ -2,6 +2,7 @@
 title: 微前端从零到落地 -- 项目初始化
 date: 2020-08-20
 categories:
+  - 前端
   - 前端架构
 tags:
   - qiankun

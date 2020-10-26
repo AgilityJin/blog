@@ -16,6 +16,9 @@ module.exports = {
       successText: '复制成功'
     }]
   ],
+  markdown: {
+    toc: { includeLevel: [1, 2, 3, 4, 5, 6] },
+  },
   themeConfig: {
     nav: [
       { text: '时间轴', link: '/timeline/', icon: 'reco-date' },
