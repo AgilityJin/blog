@@ -1,6 +1,6 @@
 ---
 title: HTML
-date: 2020-10-26
+date: 2020-10-27
 categories:
   - 前端
   - HTML
@@ -24,7 +24,7 @@ HTML全称**Hyper Text Markup Language**超文本标记语言
 
 #### 视频 video
 
-示例:
+说明示例:
 
 <<< @/examples/html/video-audio.html#video
 
@@ -42,7 +42,7 @@ src | url | 资源地址
 
 #### 音频 audio
 
-示例:
+说明示例:
 
 <<< @/examples/html/video-audio.html#audio
 
@@ -60,7 +60,7 @@ src | url | 资源地址
 
 #### 拖放 Drag & Drop
 
-示例:
+说明示例:
 
 <<< @/examples/html/drag-drop.html#dragDrop
 
@@ -74,7 +74,23 @@ src | url | 资源地址
 
 #### 地理定位 Geolocation
 
+说明示例:
+
+<<< @/examples/html/geolocation.html#geolocation
+
+[Geolocation Api 文档](https://developer.mozilla.org/zh-CN/docs/Web/API/Geolocation/Using_geolocation)
+
 #### Storage存储
+
+说明示例:
+
+<<< @/examples/html/storage.html#storage
+
+::: warning
+Storage存在可被他人恶意修改的可能,敏感数据需要加密或选择其他方案处理
+:::
+
+[Storage 文档](https://developer.mozilla.org/zh-CN/docs/Web/API/Storage)
 
 #### 应用缓存 minifest
 

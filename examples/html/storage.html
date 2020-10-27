@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Storage</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <script src="https://unpkg.com/vue@2.6.12/dist/vue.min.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+  <!-- region storage -->
+  <div id="app">
+    <el-input v-model="localData" placeholder="设置localStorage" size="large">
+      <el-button @click="setLocal" slot="append">设置</el-button>
+    </el-input>
+    <el-input v-model="sessionData" placeholder="设置sessionStorage" size="large">
+      <el-button @click="setSession" slot="append">设置</el-button>
+    </el-input>
+
+    <div>
+      local: {{localText}}<br>
+      session: {{sessionText}}<br>
+    </div>
+  </div>
+  <script>
+    const vm = new Vue({
+      data: function () {
+        return {
+          localData: '',
+          localText: '',
+          sessionData: '',
+          sessionText: ''
+        }
+      },
+      methods: {
+        setLocal () {
+          localStorage.setItem('test', this.localData)
+          this.localText = localStorage.getItem('test')
+        },
+        setSession () {
+          sessionStorage.setItem('test', this.sessionData)
+          this.sessionText = sessionStorage.getItem('test')
+        }
+      }
+    }).$mount('#app')
+    // 移除设置的数据
+    window.onbeforeunload = () => {
+      vm.$destroy()
+      localStorage.removeItem('test')
+      sessionStorage.removeItem('test')
+    }
+  </script>
+  <!-- endregion storage -->
+</body>
+</html>

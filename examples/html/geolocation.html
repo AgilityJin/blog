@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geolocation</title>
+</head>
+<body>
+  <!-- region geolocation -->
+  <script>
+    window.onload = () => {
+      if ('geolocation' in navigator) {
+        console.log('用户存在 Geolocation Api')
+        // 直接获取用户位置信息
+        navigator.geolocation.getCurrentPosition(
+          position => console.log('getCurrentPosition当前用户位置信息: ', position),
+          error => console.warn('getCurrentPosition地理信息获取异常', error)
+        );
+        // 通过订阅持续获取用户位置信息
+        const watchID = navigator.geolocation.watchPosition(
+          position => console.log('watchPosition当前用户位置信息: ', position),
+          error => console.warn('watchPosition地理信息获取异常', error)
+        )
+        setTimeout(() => navigator.geolocation.clearWatch(watchID), 5000)
+      } else {
+        console.warn('用户不存在 Geolocation Api')
+      }
+    }
+  </script>
+  <!-- endregion geolocation -->
+</body>
+</html>
