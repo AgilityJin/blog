@@ -8,8 +8,21 @@ tags:
   - html
   - html5
   - 前端基础
-sidebar: true
-sidebarDepth: 3
+  - video
+  - audio
+  - drag&drop
+  - canvas
+  - svg
+  - geolocation
+  - storage
+  - localstorage
+  - sessionstorage
+  - web worker
+  - server sent events
+  - minifest
+  - web sql
+  - semantic html
+  - 无障碍访问
 ---
 
 [[TOC]]
@@ -122,8 +135,16 @@ websocket适用于全双工通信,而SSE则适用于单向通信.
 
 <<< @/examples/html/server-sent-events.html#sse
 
+[Server Sent Events 文档](https://developer.mozilla.org/zh-CN/docs/Server-sent_events/Using_server-sent_events)
+
 #### WebSocket
 
 #### Web SQL
 
 #### 应用离线缓存 minifest (已从标准移除)
+
+### 语义化HTML (Semantic HTML)
+
+### SEO 搜索引擎优化
+
+### 无障碍访问
