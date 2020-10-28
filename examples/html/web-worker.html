@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Worker</title>
+</head>
+<body>
+  <!-- region worker -->
+  <button onclick="start()">启动worker</button>
+
+  <script>
+    // 动态创建worker js 文件
+    class DemoWorker {
+      constructor () {
+        self.onmessage = ev => {
+          console.log('收到指令: ', ev.data)
+          let index = 0
+          const timer = setInterval(() => {
+            index++
+            self.postMessage('开始发送数据流: ' + Math.random())
+            if (index >= 5) {
+              self.postMessage('worker结束, 请关闭')
+              // self.close() // worker自我关闭方法
+            }
+          }, 1000)
+        }
+      }
+    }
+    const blod = new Blob([DemoWorker.toString() + '\n new DemoWorker()'], { type: 'text/javascript' })
+
+    // 实例化worker
+    const worker = new Worker(URL.createObjectURL(blod), {
+      name: 'test worker'
+    })
+    function start () {
+      worker.addEventListener('message', res => {
+        console.log('容器收到Res: ', res)
+        if (res.data === 'worker结束, 请关闭') {
+          console.log('收到worker关闭请求, 执行关闭')
+          worker.terminate()
+        }
+      })
+      worker.postMessage('启动worker')
+    }
+  </script>
+  <!-- endregion worker -->
+</body>
+</html>

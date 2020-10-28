@@ -92,8 +92,24 @@ Storage存在可被他人恶意修改的可能,敏感数据需要加密或选择
 
 [Storage 文档](https://developer.mozilla.org/zh-CN/docs/Web/API/Storage)
 
-#### 应用缓存 minifest
-
 #### web worker
 
+> 创造多线程运行环境,无实例引用需主动关闭worker
+
+使用限制
+
+* 受同源策略限制
+* 文件安全限制 无法读取本地文件，它所加载的脚本必须来自网络，且需要与主线程的脚本同源
+* DOM限制, 无法获取主线程DOM, 即document,window均不能获取
+* 通信限制, 需要通过 postMessage 与主进程通信
+* 脚本行为限制, 不能使用alert,confirm等api,但是可以通过XMLHttpRequest发起异步请求
+
+说明示例:
+
+<<< @/examples/html/web-worker.html#worker
+
+[Worker 文档](https://developer.mozilla.org/zh-CN/docs/Web/API/Worker)
+
 #### 服务器发送事件 server-sent event
+
+#### 应用离线缓存 minifest (已从标准移除)
