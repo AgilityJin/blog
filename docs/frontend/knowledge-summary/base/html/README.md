@@ -110,6 +110,20 @@ Storage存在可被他人恶意修改的可能,敏感数据需要加密或选择
 
 [Worker 文档](https://developer.mozilla.org/zh-CN/docs/Web/API/Worker)
 
-#### 服务器发送事件 server-sent event
+#### 服务器发送事件 server-sent events
+
+:::tip
+单向通信流,由服务端发起,抵达客户端.
+
+websocket适用于全双工通信,而SSE则适用于单向通信.
+:::
+
+前端说明示例:
+
+<<< @/examples/html/server-sent-events.html#sse
+
+#### WebSocket
+
+#### Web SQL
 
 #### 应用离线缓存 minifest (已从标准移除)

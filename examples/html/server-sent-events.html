@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSE server sent events</title>
+</head>
+<body>
+  <!-- region sse -->
+  <script>
+    // 建立sse连接
+    const ev = new EventSource('http://localhost:33333/sse')
+    ev.addEventListener('open', () => console.log('成功建立连接时触发'))
+    ev.addEventListener('error', () => {
+      console.log('连接出现错误时触发')
+      ev.close() // 关闭事件流
+    })
+    ev.addEventListener('message', e => console.log('收到sse事件: ', e.data, e))
+  </script>
+  <!-- endregion sse -->
+</body>
+</html>
