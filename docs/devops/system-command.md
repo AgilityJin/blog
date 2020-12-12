@@ -20,7 +20,7 @@ tags:
 
 tree [-aACdDfFgilnNpqstux][-I <范本样式>][-P <范本样式>][目录...]
 
-示例: `tree -aCL 2 -I "node_modules|dist"`
+示例: `tree -aCL 2 -I "node_modules|dist|.git"`
 
 * -I 排除目录
 * -a 打印隐藏文件

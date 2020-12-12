@@ -44,3 +44,7 @@ mkdir packages # 创建包目录
 cd packages # 进入目录
 
 ```
+
+## 创建angular子服务工程
+
+ng new my_project
