@@ -1,6 +1,7 @@
 ---
 title: NestJS工程搭建
 date: 2020-12-12
+update: 2020-12-16
 categories:
   - 后端
   - schemes
@@ -122,7 +123,7 @@ yarn add @types/helmet -D
 ```JavaScript
 import * as helmet from 'helmet';
 
-app.use(helmet())
+app.use(helmet({contentSecurityPolicy: process.env.NODE_ENV === 'production' ? undefined : false}))
 ```
 
 ## Monorepo下更新tsconfig.json path
@@ -148,4 +149,128 @@ app.use(helmet())
     }
   }
 }
+```
+
+## 使用GraphQL
+
+安装依赖
+
+```shell
+yarn add @nestjs/graphql graphql-tools graphql apollo-server-express
+```
+
+### 模式优先
+
+定义graphql
+
+```graphql
+type Author {
+  id: Int
+  firstName: String
+  lastName: String
+  posts: [String]
+}
+
+type Query {
+  findUser(id: Int!): Author
+}
+```
+
+定义解析器
+
+```JavaScript
+import { Resolver, Args, Query } from "@nestjs/graphql";
+
+@Resolver('Author')
+export class AuthorResolver {
+  constructor(
+  ) {}
+
+  @Query('findUser')
+  findUser(@Args('id') id: number) {
+    return {
+      id,
+      firstName: 'test',
+      lastName: 'test2',
+      posts: ['test']
+    }
+  }
+}
+```
+
+模块导入解析器
+
+```JavaScript
+import { Module } from "@nestjs/common";
+import { AuthorResolver } from "./author.resolver";
+
+@Module({
+  providers: [AuthorResolver],
+})
+export class AuthorsModule {}
+```
+
+导入模块
+
+```JavaScript
+import { GraphQLModule } from '@nestjs/graphql';
+import { AuthorsModule } from './authors.module';
+
+@Module({
+  imports: [
+    GraphQLModule.forRoot({
+      debug: !APP_ENV.isProd,
+      typePaths: ['./**/*.gql'],
+      definitions: {
+        path: join(process.cwd(), 'src/graphql.ts'),
+      },
+    }),
+    AuthorsModule
+  ],
+})
+export class AppModule {}
+```
+
+## 微服务使用
+
+安装依赖
+
+```shell
+yarn add @nestjs/microservices
+```
+
+创建微服务
+
+```JavaScript
+import { NestFactory } from '@nestjs/core';
+import { Transport, MicroserviceOptions } from '@nestjs/microservices';
+import { AppModule } from './app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+    AppModule,
+    {
+      transport: Transport.TCP,
+    },
+  );
+  app.listen(() => console.log('Microservice is listening'));
+}
+bootstrap();
+```
+
+链接微服务
+
+```JavaScript
+@Module({
+  imports: [
+    ClientsModule.register([
+      {
+        name: 'MICRO_NAME',
+        transport: Transport.TCP,
+      },
+    ]),
+  ],
+  providers: [AuthorResolver],
+})
+export class AuthorsModule {}
 ```
